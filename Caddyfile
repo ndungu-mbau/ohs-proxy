@@ -27,4 +27,11 @@
       header_upstream X-Real-IP {remote}
       header_upstream X-Forwarded-Proto {scheme}
     }
+    
+    proxy /upload localhost:4000 {
+      websocket
+      header_upstream Host {host}
+      header_upstream X-Real-IP {remote}
+      header_upstream X-Forwarded-Proto {scheme}
+    }
 }
