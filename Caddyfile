@@ -1,11 +1,5 @@
 :80 {
     tls off
-    proxy / localhost:3000 {
-      websocket
-      header_upstream Host {host}
-      header_upstream X-Real-IP {remote}
-      header_upstream X-Forwarded-Proto {scheme}
-    }
 
     proxy /graph localhost:4000 {
       websocket
@@ -29,6 +23,13 @@
     }
     
     proxy /upload localhost:4000 {
+      websocket
+      header_upstream Host {host}
+      header_upstream X-Real-IP {remote}
+      header_upstream X-Forwarded-Proto {scheme}
+    }
+
+    proxy / localhost:3000 {
       websocket
       header_upstream Host {host}
       header_upstream X-Real-IP {remote}
